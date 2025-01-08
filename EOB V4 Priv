@@ -27,6 +27,38 @@ local ChangeLogText = Instance.new("TextLabel")
 local red = Color3.fromRGB(255, 0, 0)
 local green = Color3.fromRGB(0, 255, 0)
 
+local UserInputService = game:GetService("UserInputService")
+local guiToggled = false
+
+-- GUI Setup
+SteveOnePieceConCac.Name = "Steve One Piece Con Cac"
+SteveOnePieceConCac.Parent = game.CoreGui
+SteveOnePieceConCac.Enabled = guiToggled  -- Start with the GUI disabled
+
+-- Function to toggle the GUI visibility
+local function toggleGUI()
+    guiToggled = not guiToggled
+    SteveOnePieceConCac.Enabled = guiToggled
+end
+
+-- Keybind to toggle the GUI
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+    if gameProcessed then return end  -- Ignore if the player is typing in a textbox or such
+    if input.KeyCode == Enum.KeyCode.K then
+        toggleGUI()
+    end
+end)
+
+-- Rest of your GUI setup and functionality follows...
+Main.Name = "Main"
+Main.Parent = SteveOnePieceConCac
+Main.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Main.Position = UDim2.new(0.25, 0, 0.3, 0)
+Main.Size = UDim2.new(0, 350, 0, 450)
+Main.Active = true
+Main.Draggable = true
+Main.BorderSizePixel = 0
+
 -- GUI Setup
 SteveOnePieceConCac.Name = "Steve One Piece Con Cac"
 SteveOnePieceConCac.Parent = game.CoreGui
@@ -205,31 +237,18 @@ ToggleFeature.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
 ToggleFeature.Position = UDim2.new(0.1, 0, 0.2, 0)
 ToggleFeature.Size = UDim2.new(0, 300, 0, 35)
 ToggleFeature.Font = Enum.Font.Gotham
-ToggleFeature.Text = "Walkspeed: OFF"
+ToggleFeature.Text = "Toggle Feature: OFF"
 ToggleFeature.TextColor3 = Color3.fromRGB(255, 255, 255)
 ToggleFeature.TextSize = 16
 
--- Walkspeed toggle logic
+-- Toggle Feature Logic
 local featureEnabled = false
-local green = Color3.fromRGB(0, 255, 0) -- Define green color (or any custom color)
-local ToggleFeature = script.Parent -- Assuming the ToggleFeature button is the parent of the script
-
 ToggleFeature.MouseButton1Down:Connect(function()
     featureEnabled = not featureEnabled
-    ToggleFeature.Text = featureEnabled and "Walkspeed: ON" or "Walkspeed: OFF"
+    ToggleFeature.Text = featureEnabled and "Toggle Feature: ON" or "Toggle Feature: OFF"
     ToggleFeature.BackgroundColor3 = featureEnabled and green or Color3.fromRGB(75, 75, 75)
-
-    local player = game.Players.LocalPlayer
-    local humanoid = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
-
-    if humanoid then
-        if featureEnabled then
-            humanoid.WalkSpeed = 48 -- Increased speed
-        else
-            humanoid.WalkSpeed = 21.8 -- Default speed
-        end
-    end
 end)
+
 -- Navigation Update
 local SettingsButton = Instance.new("TextButton")
 SettingsButton.Name = "SettingsButton"
