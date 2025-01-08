@@ -1,0 +1,1 @@
+loadstring(game:HttpGet("https://github.com/Demorce/Field-Of-Battle-Scripts/new/main",true))()
