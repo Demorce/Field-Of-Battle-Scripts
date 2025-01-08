@@ -1,1 +1,1 @@
-loadstring(game:HttpGet("https://github.com/Demorce/Field-Of-Battle-Scripts/blob/main/Source%20Code",true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Demorce/Field-Of-Battle-Scripts/refs/heads/main/Source%20Code",true))()
