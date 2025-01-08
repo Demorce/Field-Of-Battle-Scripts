@@ -1,0 +1,340 @@
+local SteveOnePieceConCac = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local Page = Instance.new("TextLabel")
+local PageName = Instance.new("TextLabel")
+local Left = Instance.new("TextButton")
+local Right = Instance.new("TextButton")
+local Farm = Instance.new("Frame")
+local weapon = Instance.new("TextBox")
+local hidesweapon = Instance.new("TextButton")
+local SteveOnePieceConCac = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local Page = Instance.new("TextLabel")
+local PageName = Instance.new("TextLabel")
+local Left = Instance.new("TextButton")
+local Right = Instance.new("TextButton")
+local Farm = Instance.new("Frame")
+local weapon = Instance.new("TextBox")
+local hidesweapon = Instance.new("TextButton")
+local ohidesweapon = Instance.new("TextButton")
+local Load_weapon = Instance.new("TextButton")
+local Equipweapon = Instance.new("TextButton")
+local Farmweapon = Instance.new("TextButton")
+local TextLabel = Instance.new("TextLabel")
+local TextLabel_2 = Instance.new("TextLabel")
+local ChangeLog = Instance.new("Frame")
+local ChangeLogText = Instance.new("TextLabel")
+local red = Color3.fromRGB(255, 0, 0)
+local green = Color3.fromRGB(0, 255, 0)
+
+-- GUI Setup
+SteveOnePieceConCac.Name = "Steve One Piece Con Cac"
+SteveOnePieceConCac.Parent = game.CoreGui
+
+Main.Name = "Main"
+Main.Parent = SteveOnePieceConCac
+Main.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Main.Position = UDim2.new(0.25, 0, 0.3, 0)
+Main.Size = UDim2.new(0, 350, 0, 450)
+Main.Active = true
+Main.Draggable = true
+Main.BorderSizePixel = 0
+
+Page.Name = "Page"
+Page.Parent = Main
+Page.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Page.BorderSizePixel = 0
+Page.Size = UDim2.new(0, 350, 0, 50)
+Page.Font = Enum.Font.GothamBold
+Page.TextColor3 = Color3.fromRGB(25, 255, 255)
+Page.Text = "EOB V4"
+Page.TextScaled = true
+Page.TextWrapped = true
+
+PageName.Name = "PageName"
+PageName.Parent = Main
+PageName.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+PageName.BackgroundTransparency = 1
+PageName.Position = UDim2.new(0.15, 0, 0.12, 0)
+PageName.Size = UDim2.new(0, 250, 0, 30)
+PageName.Font = Enum.Font.Gotham
+PageName.Text = "Page: SwordSploit"
+PageName.TextColor3 = Color3.fromRGB(200, 200, 200)
+PageName.TextSize = 20
+PageName.TextWrapped = true
+
+Left.Name = "Left"
+Left.Parent = Main
+Left.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+Left.Size = UDim2.new(0, 40, 0, 40)
+Left.Position = UDim2.new(0.01, 0, 0.125, 0)
+Left.Font = Enum.Font.GothamBold
+Left.Text = "<"
+Left.TextColor3 = Color3.fromRGB(255, 255, 255)
+Left.TextScaled = true
+Left.Visible = false
+
+Right.Name = "Right"
+Right.Parent = Main
+Right.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+Right.Size = UDim2.new(0, 40, 0, 40)
+Right.Position = UDim2.new(0.845, 0, 0.125, 0)
+Right.Font = Enum.Font.GothamBold
+Right.Text = ">"
+Right.TextColor3 = Color3.fromRGB(255, 255, 255)
+Right.TextScaled = true
+
+Farm.Name = "Farm"
+Farm.Parent = Main
+Farm.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Farm.Position = UDim2.new(0, 0, 0.25, 0)
+Farm.Size = UDim2.new(0, 350, 0, 340)
+Farm.Visible = true
+
+weapon.Name = "Weapon"
+weapon.Parent = Farm
+weapon.BackgroundColor3 = Color3.fromRGB(55, 55, 55)
+weapon.BorderSizePixel = 0
+weapon.Position = UDim2.new(0.1, 0, 0.05, 0)
+weapon.Size = UDim2.new(0, 300, 0, 35)
+weapon.Font = Enum.Font.Gotham
+weapon.PlaceholderText = "Enter Weapon Name"
+weapon.Text = ""
+weapon.TextColor3 = Color3.fromRGB(255, 255, 255)
+weapon.TextSize = 16
+
+hidesweapon.Name = "hidesweapon"
+hidesweapon.Parent = Farm
+hidesweapon.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+hidesweapon.Position = UDim2.new(0.1, 0, 0.2, 0)
+hidesweapon.Size = UDim2.new(0, 300, 0, 35)
+hidesweapon.Font = Enum.Font.Gotham
+hidesweapon.Text = "Hide Weapon"
+hidesweapon.TextColor3 = Color3.fromRGB(255, 255, 255)
+hidesweapon.TextSize = 16
+
+ohidesweapon.Name = "ohidesweapon"
+ohidesweapon.Parent = Farm
+ohidesweapon.BackgroundColor3 = red
+ohidesweapon.Position = UDim2.new(0.1, 0, 0.2, 0)
+ohidesweapon.Size = UDim2.new(0, 300, 0, 35)
+ohidesweapon.Font = Enum.Font.Gotham
+ohidesweapon.Text = "Hide Weapon: Off"
+ohidesweapon.TextColor3 = Color3.fromRGB(255, 255, 255)
+ohidesweapon.TextSize = 16
+ohidesweapon.Visible = false
+
+Load_weapon.Name = "Load_weapon"
+Load_weapon.Parent = Farm
+Load_weapon.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+Load_weapon.Position = UDim2.new(0.1, 0, 0.35, 0)
+Load_weapon.Size = UDim2.new(0, 300, 0, 35)
+Load_weapon.Font = Enum.Font.Gotham
+Load_weapon.Text = "Load Weapon"
+Load_weapon.TextColor3 = Color3.fromRGB(255, 255, 255)
+Load_weapon.TextSize = 16
+
+Equipweapon.Name = "Equipweapon"
+Equipweapon.Parent = Farm
+Equipweapon.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+Equipweapon.Position = UDim2.new(0.1, 0, 0.5, 0)
+Equipweapon.Size = UDim2.new(0, 300, 0, 35)
+Equipweapon.Font = Enum.Font.Gotham
+Equipweapon.Text = "Equip Weapon"
+Equipweapon.TextColor3 = Color3.fromRGB(255, 255, 255)
+Equipweapon.TextSize = 16
+
+Farmweapon.Name = "Farmweapon"
+Farmweapon.Parent = Farm
+Farmweapon.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+Farmweapon.Position = UDim2.new(0.1, 0, 0.65, 0)
+Farmweapon.Size = UDim2.new(0, 300, 0, 35)
+Farmweapon.Font = Enum.Font.Gotham
+Farmweapon.Text = "Farm Weapon"
+Farmweapon.TextColor3 = Color3.fromRGB(255, 255, 255)
+Farmweapon.TextSize = 16
+
+TextLabel.Name = "AntiCheat"
+TextLabel.Parent = Farm
+TextLabel.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+TextLabel.BackgroundTransparency = 1
+TextLabel.Position = UDim2.new(0.1, 0, 0.75, 0)
+TextLabel.Size = UDim2.new(0, 300, 0, 35)
+TextLabel.Font = Enum.Font.GothamBold
+TextLabel.Text = "Made By Demorce"
+TextLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+TextLabel.TextScaled = true
+
+TextLabel_2.Name = "Info"
+TextLabel_2.Parent = Farm
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+TextLabel_2.BackgroundTransparency = 1
+TextLabel_2.Position = UDim2.new(0.1, 0, 0.875, 0)
+TextLabel_2.Size = UDim2.new(0, 300, 0, 35)
+TextLabel_2.Font = Enum.Font.GothamBold
+TextLabel_2.Text = "Best Script!"
+TextLabel_2.TextColor3 = Color3.fromRGB(0, 255, 0)
+TextLabel_2.TextScaled = true
+
+-- Adding a new Settings page to the existing script
+local Settings = Instance.new("Frame")
+local SettingsLabel = Instance.new("TextLabel")
+local ToggleFeature = Instance.new("TextButton")
+
+-- Settings Page Setup
+Settings.Name = "Settings"
+Settings.Parent = Main
+Settings.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Settings.Position = UDim2.new(0, 0, 0.25, 0)
+Settings.Size = UDim2.new(0, 350, 0, 340)
+Settings.Visible = false
+
+SettingsLabel.Name = "SettingsLabel"
+SettingsLabel.Parent = Settings
+SettingsLabel.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+SettingsLabel.Position = UDim2.new(0.1, 0, 0.05, 0)
+SettingsLabel.Size = UDim2.new(0, 300, 0, 35)
+SettingsLabel.Font = Enum.Font.GothamBold
+SettingsLabel.Text = "Settings"
+SettingsLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+SettingsLabel.TextSize = 18
+
+ToggleFeature.Name = "ToggleFeature"
+ToggleFeature.Parent = Settings
+ToggleFeature.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+ToggleFeature.Position = UDim2.new(0.1, 0, 0.2, 0)
+ToggleFeature.Size = UDim2.new(0, 300, 0, 35)
+ToggleFeature.Font = Enum.Font.Gotham
+ToggleFeature.Text = "Toggle Feature: OFF"
+ToggleFeature.TextColor3 = Color3.fromRGB(255, 255, 255)
+ToggleFeature.TextSize = 16
+
+-- Toggle Feature Logic
+local featureEnabled = false
+ToggleFeature.MouseButton1Down:Connect(function()
+    featureEnabled = not featureEnabled
+    ToggleFeature.Text = featureEnabled and "Toggle Feature: ON" or "Toggle Feature: OFF"
+    ToggleFeature.BackgroundColor3 = featureEnabled and green or Color3.fromRGB(75, 75, 75)
+end)
+
+-- Navigation Update
+local SettingsButton = Instance.new("TextButton")
+SettingsButton.Name = "SettingsButton"
+SettingsButton.Parent = Main
+SettingsButton.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+SettingsButton.Size = UDim2.new(0, 100, 0, 20)
+SettingsButton.Position = UDim2.new(0.38, 0, 0.195, 0)
+SettingsButton.Font = Enum.Font.GothamBold
+SettingsButton.Text = "Settings"
+SettingsButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+SettingsButton.TextSize = 14
+
+SettingsButton.MouseButton1Down:Connect(function()
+    Farm.Visible = false
+    ChangeLog.Visible = false
+    Settings.Visible = true
+    Page.Text = "Settings"
+    PageName.Text = "Page: Settings"
+end)
+
+-- Modify existing navigation buttons to return from Settings
+Right.MouseButton1Down:Connect(function()
+    Left.Visible = true
+    Right.Visible = false
+    Farm.Visible = false
+    Settings.Visible = false
+    ChangeLog.Visible = true
+    Page.Text = "UPDATES"
+    PageName.Text = "Page: UPDATES"
+end)
+
+Left.MouseButton1Down:Connect(function()
+    Right.Visible = true
+    Left.Visible = false
+    Farm.Visible = true
+    Settings.Visible = false
+    ChangeLog.Visible = false
+    Page.Text = "EOB V4"
+    PageName.Text = "Page: SwordSploit"
+end)
+
+
+hidesweapon.MouseButton1Down:connect(function()
+hidesweapon.BackgroundColor3 = green
+hidesweapon.Text = "Hide Weapon:ON"
+hidesweapon.Visible = false
+ohidesweapon.Visible = true
+local asword = game.Players.LocalPlayer.Backpack
+_G.asword = true
+while _G.asword do
+wait()
+for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do 
+	if v.Name == weapon.Text then
+		v.Parent = game.Players.LocalPlayer
+	end
+	end
+end
+end)
+ 
+ohidesweapon.MouseButton1Down:connect(function()
+hidesweapon.Visible = true
+ohidesweapon.Visible = false
+local asword = game.Players.LocalPlayer.Backpack
+_G.asword = false
+while _G.asword do
+wait()
+for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do 
+	if v.Name == weapon.Text then
+		v.Parent = game.Players.LocalPlayer
+	end
+	end
+end
+end)
+ 
+Equipweapon.MouseButton1Down:connect(function()
+Equipweapon.BackgroundColor3 = green
+Equipweapon.Text = "Equip Weapon: On"
+local csword = game.Players.LocalPlayer.Backpack
+_G.csword = true
+while _G.csword do 
+	wait()
+for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do 
+	if v.Name ==weapon.Text then 
+		v.Parent = game.Players.LocalPlayer.Character
+	end
+	end
+end
+wait(0.01)
+_G.csword = false
+end)
+ 
+Load_weapon.MouseButton1Down:connect(function()
+Load_weapon.Text = "Load Sword: On"
+Load_weapon.BackgroundColor3 = green
+_G.asword = false
+local lsword = game.Players.LocalPlayer.Backpack
+_G.lsword = true
+while _G.lsword do
+wait()
+for i,v in pairs(game.Players.LocalPlayer:GetChildren()) do 
+	if v.Name == weapon.Text then
+		v.Parent = game.Players.LocalPlayer.Backpack
+	end
+	end
+end
+wait(0.01)
+_G.lsword = false
+end)
+ 
+Farmweapon.MouseButton1Down:connect(function()
+	Farmweapon.Text = "Farm Weapon: On"
+	Farmweapon.BackgroundColor3 = green
+local acsword = game.Players.LocalPlayer.Backpack
+_G.acsword = true
+while _G.acsword do
+wait()
+for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+    if v.Name == weapon.Text then v:Activate() end
+    end
+    end
+end)
