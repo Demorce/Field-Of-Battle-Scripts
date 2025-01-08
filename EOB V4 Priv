@@ -205,18 +205,31 @@ ToggleFeature.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
 ToggleFeature.Position = UDim2.new(0.1, 0, 0.2, 0)
 ToggleFeature.Size = UDim2.new(0, 300, 0, 35)
 ToggleFeature.Font = Enum.Font.Gotham
-ToggleFeature.Text = "Toggle Feature: OFF"
+ToggleFeature.Text = "Walkspeed: OFF"
 ToggleFeature.TextColor3 = Color3.fromRGB(255, 255, 255)
 ToggleFeature.TextSize = 16
 
--- Toggle Feature Logic
+-- Walkspeed toggle logic
 local featureEnabled = false
+local green = Color3.fromRGB(0, 255, 0) -- Define green color (or any custom color)
+local ToggleFeature = script.Parent -- Assuming the ToggleFeature button is the parent of the script
+
 ToggleFeature.MouseButton1Down:Connect(function()
     featureEnabled = not featureEnabled
-    ToggleFeature.Text = featureEnabled and "Toggle Feature: ON" or "Toggle Feature: OFF"
+    ToggleFeature.Text = featureEnabled and "Walkspeed: ON" or "Walkspeed: OFF"
     ToggleFeature.BackgroundColor3 = featureEnabled and green or Color3.fromRGB(75, 75, 75)
-end)
 
+    local player = game.Players.LocalPlayer
+    local humanoid = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+
+    if humanoid then
+        if featureEnabled then
+            humanoid.WalkSpeed = 48 -- Increased speed
+        else
+            humanoid.WalkSpeed = 21.8 -- Default speed
+        end
+    end
+end)
 -- Navigation Update
 local SettingsButton = Instance.new("TextButton")
 SettingsButton.Name = "SettingsButton"
