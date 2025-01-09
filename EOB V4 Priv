@@ -44,7 +44,7 @@ end
 -- Keybind to toggle the GUI
 UserInputService.InputBegan:Connect(function(input, gameProcessed)
     if gameProcessed then return end  -- Ignore if the player is typing in a textbox or such
-    if input.KeyCode == Enum.KeyCode.K then
+    if input.KeyCode == Enum.KeyCode.E then
         toggleGUI()
     end
 end)
@@ -221,6 +221,7 @@ Settings.Position = UDim2.new(0, 0, 0.25, 0)
 Settings.Size = UDim2.new(0, 350, 0, 340)
 Settings.Visible = false
 
+-- Create the Settings Label
 SettingsLabel.Name = "SettingsLabel"
 SettingsLabel.Parent = Settings
 SettingsLabel.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
@@ -231,23 +232,103 @@ SettingsLabel.Text = "Settings"
 SettingsLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 SettingsLabel.TextSize = 18
 
-ToggleFeature.Name = "ToggleFeature"
+-- Create the Toggle Shiftlock Button
+ToggleFeature.Name = "Toggle Shiftlock?"
 ToggleFeature.Parent = Settings
 ToggleFeature.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
 ToggleFeature.Position = UDim2.new(0.1, 0, 0.2, 0)
 ToggleFeature.Size = UDim2.new(0, 300, 0, 35)
 ToggleFeature.Font = Enum.Font.Gotham
-ToggleFeature.Text = "Toggle Feature: OFF"
+ToggleFeature.Text = "Toggle Shiftlock?: Off"
 ToggleFeature.TextColor3 = Color3.fromRGB(255, 255, 255)
 ToggleFeature.TextSize = 16
 
+-- Create the General Autofarm Button
+local GeneralAutofarm = Instance.new("TextButton")
+GeneralAutofarm.Name = "GeneralAutofarm"
+GeneralAutofarm.Parent = Settings
+GeneralAutofarm.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+GeneralAutofarm.Position = UDim2.new(0.1, 0, 0.35, 0)
+GeneralAutofarm.Size = UDim2.new(0, 300, 0, 35)
+GeneralAutofarm.Font = Enum.Font.Gotham
+GeneralAutofarm.Text = "General Autofarm"
+GeneralAutofarm.TextColor3 = Color3.fromRGB(255, 255, 255)
+GeneralAutofarm.TextSize = 16
+
+-- Create the Speed Changer Button
+local SpeedChanger = Instance.new("TextButton")
+SpeedChanger.Name = "SpeedChanger"
+SpeedChanger.Parent = Settings
+SpeedChanger.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+SpeedChanger.Position = UDim2.new(0.1, 0, 0.5, 0)
+SpeedChanger.Size = UDim2.new(0, 300, 0, 35)
+SpeedChanger.Font = Enum.Font.Gotham
+SpeedChanger.Text = "Speed: 16"
+SpeedChanger.TextColor3 = Color3.fromRGB(255, 255, 255)
+SpeedChanger.TextSize = 16
+
+-- Create the Speed Increase Button
+local SpeedIncrease = Instance.new("TextButton")
+SpeedIncrease.Name = "SpeedIncrease"
+SpeedIncrease.Parent = Settings
+SpeedIncrease.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+SpeedIncrease.Position = UDim2.new(0.75, 0, 0.5, 0)
+SpeedIncrease.Size = UDim2.new(0, 50, 0, 35)
+SpeedIncrease.Font = Enum.Font.Gotham
+SpeedIncrease.Text = "+"
+SpeedIncrease.TextColor3 = Color3.fromRGB(255, 255, 255)
+SpeedIncrease.TextSize = 16
+
+-- Create the Speed Decrease Button
+local SpeedDecrease = Instance.new("TextButton")
+SpeedDecrease.Name = "SpeedDecrease"
+SpeedDecrease.Parent = Settings
+SpeedDecrease.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+SpeedDecrease.Position = UDim2.new(0.65, 0, 0.5, 0)
+SpeedDecrease.Size = UDim2.new(0, 50, 0, 35)
+SpeedDecrease.Font = Enum.Font.Gotham
+SpeedDecrease.Text = "-"
+SpeedDecrease.TextColor3 = Color3.fromRGB(255, 255, 255)
+SpeedDecrease.TextSize = 16
+
 -- Toggle Feature Logic
+local Players = game:GetService('Players')
 local featureEnabled = false
+
 ToggleFeature.MouseButton1Down:Connect(function()
     featureEnabled = not featureEnabled
-    ToggleFeature.Text = featureEnabled and "Toggle Feature: ON" or "Toggle Feature: OFF"
-    ToggleFeature.BackgroundColor3 = featureEnabled and green or Color3.fromRGB(75, 75, 75)
+    ToggleFeature.Text = featureEnabled and "Toggle ShiftLock: ON" or "Toggle ShiftLock: OFF"
+    ToggleFeature.BackgroundColor3 = featureEnabled and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(75, 75, 75)
+    
+    -- Enable or disable ShiftLock
+    Players.LocalPlayer.DevEnableMouseLock = featureEnabled
 end)
+
+-- General Autofarm Logic
+GeneralAutofarm.MouseButton1Down:Connect(function()
+    loadstring(game:HttpGet("https://gist.githubusercontent.com/78n/c6d1af261f4a8066c8b9d347882a8e29/raw/9b403b4f00abdb6506ffb8ad18abd651bc163d5a/fob.lua"))()
+end)
+
+-- Speed Changer Logic
+local currentSpeed = 16
+
+local function updateSpeed()
+    SpeedChanger.Text = "Speed: " .. currentSpeed
+    Players.LocalPlayer.Character.Humanoid.WalkSpeed = currentSpeed
+end
+
+SpeedIncrease.MouseButton1Down:Connect(function()
+    currentSpeed = currentSpeed + 1
+    updateSpeed()
+end)
+
+SpeedDecrease.MouseButton1Down:Connect(function()
+    currentSpeed = currentSpeed - 1
+    updateSpeed()
+end)
+
+updateSpeed()
+
 
 -- Navigation Update
 local SettingsButton = Instance.new("TextButton")
@@ -323,19 +404,28 @@ for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 end
 end)
  
+local equipped = false  -- Variable to track whether the weapon is equipped
+
 Equipweapon.MouseButton1Down:connect(function()
-Equipweapon.BackgroundColor3 = green
-Equipweapon.Text = "Equip Weapon: On"
-local csword = game.Players.LocalPlayer.Backpack
-_G.csword = true
-while _G.csword do 
-	wait()
-for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do 
-	if v.Name ==weapon.Text then 
-		v.Parent = game.Players.LocalPlayer.Character
-	end
-	end
-end
+    equipped = not equipped  -- Toggle the equipped state
+
+    if equipped then
+        Equipweapon.BackgroundColor3 = green
+        Equipweapon.Text = "Equip Weapon: On"
+        local csword = game.Players.LocalPlayer.Backpack
+        _G.csword = true
+        
+        -- Equip the weapon
+        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do 
+            if v.Name == weapon.Text then 
+                v.Parent = game.Players.LocalPlayer.Character
+            end
+        end
+    else
+        Equipweapon.BackgroundColor3 = Color3.new(255, 0, 0)  -- Reset to white or desired color
+        Equipweapon.Text = "Equip Weapon: Off"
+        _G.csword = false  -- Stop the loop and unequip the weapon
+    end
 wait(0.01)
 _G.csword = false
 end)
